@@ -1,0 +1,10 @@
+TEMPLATE DRIVEN FORMS:
+    1. add (ngSubmit) = "function()" in HTML tag
+    2. add a variable equal to ngForm
+       ( the ngForm is directive included with the forms module, we have it by default but it's be hidden so we use variable to get it).
+    3. add the variable which one get the ngForm to function(variable);
+
+
+    EXAMPLE:
+        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)"></form>
+              here is variable               function(variable)
