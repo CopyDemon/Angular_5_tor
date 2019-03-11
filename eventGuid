@@ -1,0 +1,19 @@
+MOUSE EVENT:
+    *all javascript mouse event are aviable.
+    EXAMPLE:
+        1. click
+        2. mouseover
+        3. mousedown
+        4. mouseout
+        5. mousedown
+        6. mouseup
+        7. dblclick
+        8. drag
+        9. dragover
+
+    1. use click as an example:
+        add (click) = "function()" into html tag.
+        the function is defined in TS file.
+
+    EXAMPLE:
+        <button (click) = "console()">

@@ -36,3 +36,11 @@ ADD BOOTSTRAP:
         "./node_modules/bootstrap/dist/js/bootstrap.js"
 
         3. restart server
+
+
+ADD FONTAWESOME:
+     1. npm install font-awesome
+
+     2. go to angular.json file:
+        1. find styles[] add:
+        "./node_modules/font-awesome/css/font-awesome.css"

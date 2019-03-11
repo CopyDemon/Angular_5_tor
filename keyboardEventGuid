@@ -1,0 +1,9 @@
+        input: 
+            1. keydown
+            2. keyup
+            3. keypress
+            4. focus
+            5. blur
+            6. cut
+            7. paste
+            8. copy

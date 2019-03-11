@@ -42,7 +42,7 @@ CLASS BINDING:
             Object = {};
 
             ngInit(){
-                setClass();
+                this.setClass();
             }
 
             setClass(){

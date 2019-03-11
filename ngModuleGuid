@@ -1,0 +1,15 @@
+ngModel is a two way banding function in angular.
+
+set up a ngModel for your angular:
+    1. go to angular.module.ts file
+    2. import import { FormsModule } from "@angular/Forms";
+    3. add FormsModule into imports
+
+now you can use ngModule in your tamplate html.
+    EXAMPLE:
+        <input [(ngModule)] = "user.firstName" type="text">
+
+        EXPLAN:
+            [] this is bind data from component to template,
+            () this is for event, it bind data from template to component to class.
+            [()] this is two way binding
