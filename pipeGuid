@@ -1,0 +1,77 @@
+1. lowercase and uppercase
+    EXAMPLE:
+        change all text to lowercase.
+        <p>{{user.userName | lowercase}}</p>
+
+        change all text to uppercase.
+        <p>{{user.userName | uppercase}}</p>
+
+
+2. currency
+    EXAMPLE:
+        1.add currency infrot of number.
+         <p>{{user.bankBalance | currency}}</p>
+         //output: $ 100.00
+        
+        2.change currency type (here I change it into CNY)
+        <p>{{user.bankBalance | currency:"CNY"}}</p>
+         //output: ￥ 100.00
+
+        3.display text instead of symbol.
+        <p>{{user.bankBalance | currency:"CNY":"code"}}</p>
+         //output: $ 100.00
+
+
+3. date
+    EXAMPLE:
+    DATE WITHOUT TIME 
+        1.date.
+        <p>joined: {{user.joinDate | date}}</p>
+        //outpute: joined: Jan 2, 2018
+
+        2.Date with format.
+        <p>joined: {{user.joinDate | date:"dd/mm/yyyy"}}</p>
+        //outpute: joined 02/02/2018
+
+        3.shortDate.
+        <p>joined: {{user.joinDate | date:"shortDate"}}</p>
+        //outpute: joined 2/2/18
+
+        4.longDate.
+        <p>joined: {{user.joinDate | date:"longDate"}}</p>
+        //outpute: joined January 2, 2018
+
+        5.fullDate.
+        <p>joined: {{user.joinDate | date:"fullDate"}}</p>
+        //outpute: joined Tuesday, January 2, 2018
+
+    DATE WITH TIME
+        1.shortTime
+        <p>joined: {{user.joinDate | date:"shortTime"}}</p>
+        //outpute: joined Tuesday, January 2, 2018 4:00PM
+
+        2.longTime
+        <p>joined: {{user.joinDate | date:"longTime"}}</p>
+        //outpute: joined Tuesday, January 2, 2018 4:00PM GMT-8
+
+
+4. number with decimal:
+    EXAMPLE:
+        1. with how many decimal:
+        <p>{{numberData | number:"1.3"}}</p>
+        //output: numberData.000   (5.000)
+
+        2. with how many zero infront:
+        <p>{{numberData | number:"3.1"}}</p>
+        //output: 00numberData.0   (005.0)
+
+5.percent
+    EXAMPLE:
+    1. 100%
+    <p>{{1 | percent}}</p>
+    //output: 100%
+
+    1. 50%
+    <p>{{.5 | percent}}</p>
+    //output: 50%
+        

@@ -14,7 +14,7 @@ DATA BINDING:
 
 
 CLASS BINDING:
-    class bingding is to bind a className to a html tag base on bool.
+<1> class bingding is to bind a className to a html tag base on bool.
     
     EXPLAIN:
         if(true set class name) else won't set class name.
@@ -30,3 +30,57 @@ CLASS BINDING:
 
         2. assign the class to an html element.
             <p [class.RedBackground] = "user.isActive"></p>
+
+<2> if the class name defined in ts file as an Object:
+    WORKS WAY:
+        <HTML> file:
+            <p [ngClass] = "ObjectName"></p> (the Object in create in ts file)
+        
+        <TS> file:
+            boolOne:boolean;
+            boolTwo:boolean;
+            Object = {};
+
+            ngInit(){
+                setClass();
+            }
+
+            setClass(){
+                this.Object = {
+                    "classOne":boolOne, // add or not add class based on the bool
+                    "classTwo":boolTwo  // add or not add class based on the bool
+                }  
+            }
+            
+            EXTEND:
+                in the  "classOne":boolOne part we can add condition in it.
+                ***<go find more info in STYLE BINDING below>***
+
+                EXAMPLE:
+                    if boolOne == true turn yello, if false turn yellow.
+                    
+                     setClass(){
+                        this.Object = {
+                            "background-color":boolOne ? "red" : "yellow"
+                        }  
+                    }
+
+
+
+STYLE BINDING:
+    style bind is to binding a style to a class base on bool.
+
+    EXPLAIN:
+        if(true bind this style) else won't bind this style.
+
+    WORKS WAY:
+        setABool:boolean = true;
+        <p [style.styleAttribute = " setBool ? 'newStyle' : ' oldStyle / noneStyle' "]></p>
+    
+    EXAMPLE:
+        1. set up bool:
+            isActive?:boolean;
+            isActive = true;
+        
+        2. bind the bool to html and show or not show style.
+            <p[style.border]="isActive ? 'green' : 'red' "></p>
