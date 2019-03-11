@@ -1,0 +1,38 @@
+INSTALL & START
+    1. install angular on your computer:
+       npm install -g @angular/cli (if no angular cli in computer)
+
+    2. create a new angualr app:
+       ng create appName
+
+    3. start or stop your live server:
+       start: npm start  or ng serve
+       stop: CTRL + C
+
+
+CREATE A COMPONENT:
+    1. create a component in your app:
+       ng generate component root/newComponentName
+
+       SHORT WAY:
+       ng g c root/newComponentName
+
+    2. if you dont want some kind of file when create componment:
+       add --fileAttribute==false after the newComponentName
+       Example:
+       ng g c root/newComponentName --fileAttribute==false.
+
+
+ADD BOOTSTRAP:
+    1. npm install npm install bootstrap @4.0.0-beta.2 jquery poper.js
+
+    2. go to angular.json file:
+        1. find styles[] add:
+        "./node_modules/bootstrap/dist/css/bootstrap.css"
+        
+        2. find scripts[] add:
+        "./node_modules/jquery/dist/jquery.js",
+        "./node_modules/popper.js/dist/umd/popper.js",
+        "./node_modules/bootstrap/dist/js/bootstrap.js"
+
+        3. restart server

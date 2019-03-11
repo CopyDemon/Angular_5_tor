@@ -1,0 +1,33 @@
+<!-- {{ *ngFor users }} -->
+
+<h2>Users</h2>
+<button [disabled]="!enableAdd" class="btn btn-light btn-block mb-3">Add new user</button>
+<ul class="list-unstyled" *ngIf="loaded && users?.length > 0; else noUsers">
+  <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActive">
+    <div class="row">
+      <div class="col-sm-4">
+        <!-- <img *ngIf="user.image" class="img-fluid" [src]="user.image" alt=""> -->
+        <!-- <img *ngIf="user.image" class="img-fluid" src="{{user.image}}" alt=""> -->
+        <img *ngIf="user.image" class="img-fluid" bind-src="user.image" alt="">
+      </div>
+      <div class="col-sm-8">
+        <h3>
+          <!-- <span [textContent]="user.firstName">{{user.lastName}}</span> -->
+          <p bind-textContent="user.firstName"></p>
+        </h3>
+        <ul class="list-group" *ngIf="showExtended && user.age && user.address">
+          <li class="list-group-item">Age: {{ user.age }}</li>
+          <li class="list-group-item">
+            Address: {{ user.address.street }} {{ user.address.city }}
+            {{ user.address.state }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<!-- <ng-template #noUsers>No Users Found</ng-template> -->
+<h4 *ngIf="users?.length == 0">No Users Found</h4>
+
+<h4 *ngIf="!Loaded">Loading Users.....</h4>

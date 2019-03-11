@@ -5,9 +5,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { UserComponent } from "./components/user/user.component";
 import { ToDoList } from "./components/todoList/todoList.component";
+import { UsersComponent } from './components/users/users.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, ToDoList],
+  declarations: [AppComponent, UserComponent, ToDoList, UsersComponent, NavbarComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]

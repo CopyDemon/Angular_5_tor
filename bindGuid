@@ -1,0 +1,32 @@
+DATA BINDING:
+    Tere are three ways to bind data:
+        1.use: [] = "data"
+            EXAMPLE:
+                <span [textContent]="user.firstName"></span>
+        
+        2.use: {{data}}
+            EXAMPLE:
+            <p>{{user.fistName}}</p>
+        
+        3.use: bind-Attribute="data"
+            EXAMPLE:
+            <p bind-textContent="fistName"></p>
+
+
+CLASS BINDING:
+    class bingding is to bind a className to a html tag base on bool.
+    
+    EXPLAIN:
+        if(true set class name) else won't set class name.
+    
+    WORKS WAY:
+        setABool:boolean = true;
+        <p [class.className] = "exportedFile.theBooleanVariable"></p>
+    
+    EXAMPLE:
+        1. set up bool:
+            isActive?:boolean;
+            isActive = true;
+
+        2. assign the class to an html element.
+            <p [class.RedBackground] = "user.isActive"></p>
