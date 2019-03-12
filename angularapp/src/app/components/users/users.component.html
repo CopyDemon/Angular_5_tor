@@ -4,21 +4,62 @@
   <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
     <div class="form-group">
       <label>First Name</label>
-      <input type="text" [(ngModel)]="user.firstName" class="form-control is-invalid" name="firstName"
-        #userFirstName="ngModel" required minlength="2">
-      <div class="invalid-feedback">
+      <input 
+        type = "text"
+        name = "firstName"
+        #userFirstName = "ngModel"
+        [(ngModel)] = "user.firstName"
+        [ngClass] = "{'is-invalid':userFirstName.errors && userFirstName.touched}"
+        minlength = "2"
+        class="form-control" 
+        required
+      >
+      <div class="invalid-feedback" [hidden]="!userFirstName.errors?.required">
         first name required
+      </div>
+      <div class="invalid-feedback" [hidden]="!userFirstName.errors?.minlength">
+        Must be at least 2 characters
       </div>
     </div>
     <div class="form-group">
       <label>Last Name</label>
-      <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastName">
+      <input 
+        type="text" 
+        name="lastName"
+        class="form-control" 
+        #userLastName="ngModel"
+        [(ngModel)] = "user.lastName"
+        [ngClass] = "{'is-invalid':userLastName.errors && userLastName.touched}"
+        minlength = "2" 
+        required
+      >
+      <div class="invalid-feedback" [hidden]="!userLastName.errors?.required">
+          last name required
+      </div>
+      <div class="invalid-feedback" [hidden]="!userLastName.errors?.minlength">
+          Must be at least 2 characters
+      </div>
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="text" class="form-control" [(ngModel)]="user.email" name="email">
+      <input 
+        type="text" 
+        name="email"
+        class="form-control" 
+        #userEmail = "ngModel"
+        [(ngModel)]="user.email" 
+        [ngClass] = "{'is-invalid':userEmail.errors && userEmail.touched}"
+        pattern = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+        required 
+      >
+      <div class="invalid-feedback" [hidden]="!userEmail.errors?.required">
+          Email required
+      </div>
+      <div class="invalid-feedback" [hidden]="!userEmail.errors?.pattern">
+          Email is not valid
+      </div>
     </div>
-    <button [disabled]="user.firstName == '' || user.lastName == ''" class="btn btn-block mb-3">Add New User</button>
+    <button [disabled]="!userForm.form.valid" class="btn btn-block mb-3">Add New User</button>
   </form>
 </div>
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">

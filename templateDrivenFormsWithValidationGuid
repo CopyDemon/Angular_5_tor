@@ -8,3 +8,80 @@ TEMPLATE DRIVEN FORMS:
     EXAMPLE:
         <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)"></form>
               here is variable               function(variable)
+    4. Add ViewChild in ts file in import. (this is from @angular/core)
+            this ViewChild gives us to access to the child component ???
+    
+    5. Add @ViewChild('htmlFormName')form:any, (in ts file)
+    6. add function to updata form in ts file
+            EXAMPLE:
+                	onSubmit({ value, valid }: { value: User; valid: boolean }) {
+                        if (!valid) {
+                            console.log('form is not valid');
+                        } else {
+                            this.users.unshift(value);
+                            value.isActive = true;
+                            value.registered = new Date();
+                            value.hide = false;
+                            this.form.reset();
+                        }
+                    }
+
+
+BOOTSTRAP VALIDATION CHECK:
+    * add requird to an input to make this input inescapable
+
+    1.ASSIGN IN VALID INPUT MESSAGE
+        (1. add class is-invalid in input tag) optional not very good way.
+
+        2. add variable linked to the model: #variable = "ngModle"
+        3. user ngClass to check if there is error with input:
+            [ngClass] = "{'is-invalid':variable.error && variable.touched}"
+            01.variable.error is to check if input is valid.
+            02.variable.touch is to check if user already touched that input.
+        4. add a div with class invalid-feedback
+        5. in that div type in notice want to display.
+
+    2.DISPLAY DIFFERENT IN VALID INPUT MESSAGE IN DIFFERENT SITUATIONS.
+        1. set #variable = "ngModle" (situation 1)
+        2. set minlength = "lengthNumber" (situation 2)  here can required different rules depends on we need.
+        3. how many situations we need how many HTML tag to contained error message. here we have 2 situations so we have 2 tage to contained error message.
+        4. in error tage we user [hidden] with error options to display or hide error message. in hidden we use the variable we used before.
+        
+        EXAMPLE:
+            if no user name and input length < 2.
+            INPUT TAGE:
+                <input 
+                    type = "text"
+                    name = "firstName"
+                    #userFirstName = "ngModel"
+                    [(ngModel)]="user.firstName"
+                    [ngClass] = "{'is-invalid':userFirstName.errors && userFirstName.touched}"
+                    minlength = "2"
+                    required // here make is this input must be filed 
+                >
+                <div class="invalid-feedback" 
+                    [hidden]="!userFirstName.errors?.requered"
+                >
+                     first name required
+                </div>
+
+                <div class="invalid-feedback" 
+                    [hidden]="!userFirstName.errors?.minlength"
+                >
+                     Must be at least 2 characters
+                </div>
+    
+
+
+#userFirstName = "ngModel": this is the default short way.
+    add in input tag:
+        the #userFirstName can be seen as user.firstName //need test
+
+
+assign the min length for input:
+    add input tag:
+        minlength="lengthNumber"
+
+assign the parrtern for input:
+    add input tag:
+        pattern:"RegEx"
