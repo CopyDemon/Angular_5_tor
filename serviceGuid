@@ -1,4 +1,84 @@
 WHAT IS SERVICE?
     1. class that can send functionality and data across multiple components.
-    2. keep component clean
+    2. keep component lean(not blow up with ajax call)
     3. keep our app dry --- don't repeate yourself
+    4. ideal place for Ajax calls using the http module.
+
+
+1. basic data: this is more like hard coding data
+2. observable: this is more like a data stream
+3.
+
+HOT TO START A SERVICE:
+    1. Create a new file /servicesRoot/serviceName.service.ts 
+        (ng g s serviceRoot/serviveName module=app.module)
+        {
+            if module = app.module not working
+            1. go to app.module.ts
+            2. import { serviceClassName } from "serviceRoot";
+            3. add serviceName to provider.
+        }
+
+
+BASIC DATA:
+    IN DATA SERVICE TS FILE:
+        2. In data file we need to import data interface file.
+        3. In data service.ts file we need to get data.
+        4. fromat data
+        5. create function in data service file to return data.
+    IN COMPONENT TS FILE:
+        1. Import data interface file
+        2. Set private or public and set a variable from data service class name.
+        3. In OnInit to call funtion from data service file to get data.
+
+    SERVICE BASIC FILE EXAMPLE:
+        import { Injectable } from '@angular/core'
+        import { user } from './user';
+        import { USERS } from './mock-users'; //mockup back-end
+
+        @Injectable()
+        export class UserService{
+            getUser():user[]{
+                return USERS;
+            }
+        }
+
+
+        GET DATA FROM SERVICE TO COMPONMENT EXAMPLE: 
+            After create service in app:
+
+            In DataService.ts file
+                1. import { Injectable } from "@angular/core"
+                2. import { interfaceFileName }  from "interfaceFileRoot"
+                3. export class DataServiceName {
+                    dataVariableName:interfaceName[];
+
+                    constroctor(){
+                        this.dataVariableName = data;
+                    }
+                    
+                    function(){
+                        return this.dataVarableName
+                    }
+                }
+
+            In conponent.ts file:
+                import { dataServiceClassName } from "dataServiceRoot";
+                import { interFaceName } from "interFaceRoot";
+                
+                export class componentClassName implements OnInit{
+                    getInterFaceName : InterFaceName[];
+
+                    constroctor(private/public, dataServiceVariable : dataServiceClassName){}
+
+                    OnInit {
+                        this.getInterFaceName = this.dataServiceVariable.function();
+                    }
+                }
+
+
+2. OBSERVABLE:
+    1.  In the data service TS file:
+        import { Observable } from 'rxjs/Observable' this is angular 5
+        import { Observable } from 'rxjs' this is angular 6+
+                

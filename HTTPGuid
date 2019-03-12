@@ -1,0 +1,68 @@
+HTTP 
+
+    set up HTTP
+    1. create a service file.
+    2. in service file:
+        import { HttpClient, HttpHeaders} from '@angular/common/http';
+        import { Observable } from 'rxjs'; // the HttpClient returns Observable.
+    3. in app.module.ts file:
+        1. import { HttpClientModule } from '@angular/common/http';
+        2. add HttpClientModule into @NgModule[].
+    4. back to service ts file create a variable store Json file url.
+    5. in add private http: Http client in constructor argument.
+        EXAMPLE:
+            constructor(private http:HttpClient){}
+    5. create a function to get post.
+        EXAMPLE:
+            getPost():Observable<Post[]>{
+                return this.http.get<Post[]>(this.jsonUrlVariable)
+            }
+    6. in post ts file:
+        1. import the service file.
+        2. in constructor(private newServiceVariable:ServiceClassName){}
+        3. in ngOnInit(){
+            this.postService.getPost().subscribe(argument => { //here the argument is the data we get from json
+                console.log(argument);
+                return argument;
+            })
+        }
+
+ADD AN POST:
+    1. create a post form component.
+    2. in post.component.html add form
+            *** the #title and #body allow us to get input value with title and body
+            <form>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" #title>
+                </div>
+                <div class="form-group">
+                    <label>Body</label>
+                    <input type="text" name="body" class="form-control" #body>
+                </div>
+                <button class="btn btn-dark btn-block" (click)="addPost(title.value, body.value)">Add New Post</button>
+            </form>
+    3.  In the service.ts file:
+            1. import { Post } from '../models/Post';
+               import { HttpClient, HttpHeaders } from '@angular/common/http';
+               import { Observable } from 'rxjs';
+            2. const httpOptions = {
+                    headers: new HttpHeaders({ 'Content-Type': 'application.json' })
+                };
+            3. postUrl : string = "JsonUrl"
+            4. create a function in form service to save post.
+                savePost(post: Post): Observable<Post> {
+                    return this.http.post<Post>(this.postUrl, post, httpOptions);
+                }
+
+    4.  In the post.component.ts file
+            1. import { serviceClassName } from 'serviceRoot';
+            2. import { interface } from 'interfaceRoot';
+            3. post : interface[];
+            4. constructor(private newPostVariable:ServiceClassName){}
+            5. addPost(value1, value2.....){
+                this.postService.useFunctionFromServiceSavePost({value1, value2...} as post).subscribe(newPostArgument => {
+                    console.log(newPostArgument);
+                })
+            }
+        
