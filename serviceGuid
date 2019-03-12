@@ -1,0 +1,4 @@
+WHAT IS SERVICE?
+    1. class that can send functionality and data across multiple components.
+    2. keep component clean
+    3. keep our app dry --- don't repeate yourself
