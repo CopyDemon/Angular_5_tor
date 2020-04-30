@@ -24,7 +24,8 @@ CREATE A COMPONENT:
 
 
 ADD BOOTSTRAP:
-    1. npm install npm install bootstrap @4.0.0-beta.2 jquery poper.js
+    1. npm install:
+     npm install bootstrap (@version)? jquery popper.js
 
     2. go to angular.json file:
         1. find styles[] add:
